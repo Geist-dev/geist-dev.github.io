@@ -1,9 +1,9 @@
-const canvas = document.getElementById("bg-canvas");
-const ctx = canvas.getContext("2d");
+const bgCanvas = document.getElementById("bg-canvas");
+const bgCtx = bgCanvas.getContext("2d");
 
 function resize() {
-  canvas.width = window.innerWidth;
-  canvas.height = window.innerHeight;
+  bgCanvas.width = window.innerWidth;
+  bgCanvas.height = window.innerHeight;
 }
 window.addEventListener("resize", resize);
 resize();
@@ -19,28 +19,27 @@ document.getElementById("theme-toggle").addEventListener("click", () => {
 });
 
 function drawTree(x, y, scale = 1) {
-  ctx.save();
-  ctx.translate(x, y);
-  ctx.scale(scale, scale);
-  ctx.fillStyle = "#704214";
-  ctx.fillRect(-5, 0, 10, 40); // trunk
+  bgCtx.save();
+  bgCtx.translate(x, y);
+  bgCtx.scale(scale, scale);
+  bgCtx.fillStyle = "#704214";
+  bgCtx.fillRect(-5, 0, 10, 40); // trunk
 
-  // blossoms
   for (let i = 0; i < 30; i++) {
     const angle = Math.random() * Math.PI * 2;
     const r = Math.random() * 25;
     const bx = Math.cos(angle) * r;
     const by = -40 + Math.sin(angle) * r;
-    ctx.beginPath();
-    ctx.fillStyle = theme === "day" ? "pink" : "#cc88aa";
-    ctx.arc(bx, by, 3, 0, Math.PI * 2);
-    ctx.fill();
+    bgCtx.beginPath();
+    bgCtx.fillStyle = theme === "day" ? "pink" : "#cc88aa";
+    bgCtx.arc(bx, by, 3, 0, Math.PI * 2);
+    bgCtx.fill();
   }
-  ctx.restore();
+  bgCtx.restore();
 }
 
 function drawSky() {
-  const g = ctx.createLinearGradient(0, 0, 0, canvas.height);
+  const g = bgCtx.createLinearGradient(0, 0, 0, bgCanvas.height);
   if (theme === "night") {
     g.addColorStop(0, "#0a0a2a");
     g.addColorStop(1, "#1a1a3a");
@@ -48,27 +47,26 @@ function drawSky() {
     g.addColorStop(0, "#87cefa");
     g.addColorStop(1, "#ffffff");
   }
-  ctx.fillStyle = g;
-  ctx.fillRect(0, 0, canvas.width, canvas.height);
+  bgCtx.fillStyle = g;
+  bgCtx.fillRect(0, 0, bgCanvas.width, bgCanvas.height);
 
-  // celestial object
   if (theme === "night") {
-    ctx.drawImage(moon, canvas.width - 100, 50, 50, 50);
+    bgCtx.drawImage(moon, bgCanvas.width - 100, 50, 50, 50);
     for (let i = 0; i < 50; i++) {
-      ctx.beginPath();
-      ctx.fillStyle = "white";
-      ctx.arc(Math.random() * canvas.width, Math.random() * canvas.height / 2, 1, 0, Math.PI * 2);
-      ctx.fill();
+      bgCtx.beginPath();
+      bgCtx.fillStyle = "white";
+      bgCtx.arc(Math.random() * bgCanvas.width, Math.random() * bgCanvas.height / 2, 1, 0, Math.PI * 2);
+      bgCtx.fill();
     }
   } else {
-    ctx.drawImage(sun, canvas.width - 100, 50, 40, 40);
+    bgCtx.drawImage(sun, bgCanvas.width - 100, 50, 40, 40);
   }
 }
 
 function draw() {
   drawSky();
-  for (let i = 0; i < canvas.width; i += 150) {
-    drawTree(i + 75, canvas.height - 100, 1 + Math.random() * 0.5);
+  for (let i = 0; i < bgCanvas.width; i += 150) {
+    drawTree(i + 75, bgCanvas.height - 100, 1 + Math.random() * 0.5);
   }
   requestAnimationFrame(draw);
 }
