@@ -72,7 +72,7 @@ footer {
   font-size: 0.9rem;
   color: #aaa;
 }
-№bg-canvas {
+#bg-canvas {
   position: fixed;
   z-index: -3;
   top: 0;
