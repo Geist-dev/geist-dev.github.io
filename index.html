@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Geist-dev — Портфолио</title>
+  <link rel="stylesheet" href="style.css" />
+  <script defer src="script.js"></script>
+</head>
+<body>
+  <video autoplay muted loop id="bg-video">
+    <source src="sakura.mp4" type="video/mp4">
+  </video>
+  <canvas id="petals-canvas"></canvas>
+
+  <header>
+    <h1>Geist-dev</h1>
+    <p>Backend / Fullstack разработчик</p>
+    <button id="theme-toggle">🌓</button>
+    <button id="music-btn">🎵 Музыка</button>
+  </header>
+
+  <audio id="bg-music" loop>
+    <source src="music.mp3" type="audio/mpeg" />
+  </audio>
+
+  <section id="about">
+    <h2>Обо мне</h2>
+    <p>
+      Привет! Я Geist, backend/fullstack разработчик. Люблю писать Discord-ботов, Telegram-ботов, Vk-ботов, настраивать VPN-инфраструктуру, создавать админ-панели с FastAPI и React, заниматься аналитикой (автоматизацией аналитики) и геоинформационными системами.
+    </p>
+  </section>
+
+  <section id="projects">
+    <h2>Проекты</h2>
+    <p>Мои проекты появятся здесь автоматически после загрузки на GitHub.</p>
+    <div id="project-list">Загрузка...</div>
+  </section>
+
+  <section id="contact">
+    <h2>Контакты</h2>
+    <ul>
+      <li>Telegram: <a href="https://t.me/flipgood">@flipgood</a></li>
+      <li>Email: <a href="mailto:aeromax.live@mail.ru">aeromax.live@mail.ru</a></li>
+      <li>GitHub: <a href="https://github.com/Geist-dev">Geist-dev</a></li>
+    </ul>
+  </section>
+
+  <footer>
+    <p>© 2025 Geist-dev</p>
+  </footer>
+</body>
+</html>
