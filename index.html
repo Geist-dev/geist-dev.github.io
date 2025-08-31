@@ -46,18 +46,6 @@
   </footer>
 
 <script>
-  const music = document.getElementById('bg-music');
-  const btn = document.getElementById('music-toggle');
-
-  btn.addEventListener('click', () => {
-    if (music.paused) {
-      music.play();
-      btn.textContent = '🔈';
-    } else {
-      music.pause();
-      btn.textContent = '🔇';
-    }
-  });
 
   async function loadRepos() {
     const container = document.getElementById('project-list');
